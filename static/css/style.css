@@ -1,0 +1,387 @@
+/* static/style.css */
+
+/* 基本スタイル（全デバイス共通） */
+.faith-text {
+  font-size: 2.2em;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* 基本スタイル（モバイルファースト） */
+body {
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  background-image: url('../img/space_bg.png');
+  background-color: #f0f0f0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #444;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  z-index: 0;
+}
+
+/* ヘッダー＆フッター */
+header, footer {
+  background: linear-gradient(to right, #f48fb1, #81d4fa);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-bottom: 5px solid #fff59d;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem;
+}
+
+header h1 {
+  animation: glow 3s infinite alternate;
+  font-size: 1.8rem;
+  margin: 0.5rem 0;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+/* ナビゲーション */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0.5rem 0;
+}
+
+nav a {
+  background: rgba(255,255,255,0.2);
+  border-radius: 50px;
+  margin: 0.3rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s;
+  min-width: 48px;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  padding: 2rem;
+  margin: 1rem auto;
+  max-width: 900px;
+  background-color: rgba(193, 247, 213, 0.9);
+  border: 3px solid red; /* テスト用 */
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  animation: fadeIn 1s ease-in-out;
+  position: relative;
+  z-index: 10;
+}
+
+
+/* メディアクエリを詳細化 */
+@media screen and (max-width: 767px),
+       (hover: none) and (pointer: coarse) {
+  main {
+    border: 3px solid red !important;
+    /* 追加でスマホ専用スタイル */
+    padding: 0.5rem !important;
+    margin: 0.5rem !important;
+  }
+}
+
+
+
+/* 基本スタイル（全デバイス向け） */
+#retryBtn {
+  font-family: sans-serif !important; /* フォント指定 */
+  font-size: 30px !important;
+  font-weight: normal !important;
+}
+
+/* スマホ向けスタイル */
+@media screen and (max-width: 767px) {
+  #retryBtn {
+    font-size: 18px !important;
+  }
+}
+
+
+/* ボタン基本スタイル */
+#change-verse {
+  display: inline-block;
+  font-size: 16px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px auto;
+  text-align: center;
+}
+
+/* PC用拡大スタイル */
+@media (min-width: 768px) {
+  #change-verse {
+    font-size: 30px !important; /* フォント拡大 */
+    padding: 12px 24px !important; /* ボタンサイズ調整 */
+    min-width: 200px; /* 最小幅指定 */
+  }
+}
+
+
+/* ====================
+   メッセージカード調整
+   ==================== */
+   #messageCard {
+    all: initial; /* リセット */
+    display: block !important;
+    font-size: 1rem !important; /* スマホ基準 */
+    font-family: "Hiragino Sans", sans-serif !important;
+    background: rgba(255,255,255,0.9) !important;
+    padding: 10px !important;
+    border-radius: 8px !important;
+    margin: 10px auto !important;
+    text-align: center !important;
+  }
+
+  @media (min-width: 768px) {
+    #messageCard {
+      font-size: 2.0rem !important; /* PC用拡大 */
+    }
+  }
+
+
+
+/* ====================
+   メッセージボックス調整
+   ==================== */
+  /* 基本スタイル */
+  #verseBox {
+    all: initial; /* リセット */
+    display: none !important;
+    position: fixed !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 90% !important;
+    max-width: 600px;
+    background: rgba(255,255,255,0.9) !important;
+    padding: 12px !important;
+    border: 1px solid #ccc !important;
+    border-radius: 8px !important;
+    z-index: 1000 !important;
+    font-size: 1rem !important;
+    font-weight: normal !important;
+    text-align: center;
+    margin: 0 !important;
+  }
+
+  /* PC表示（下部） */
+  @media (min-width: 768px) {
+    #verseBox {
+      bottom: 20px !important;
+      top: auto !important;
+    }
+  }
+
+  /* スマホ表示（上部） */
+  @media (max-width: 767px) {
+    #verseBox {
+      top: 10px !important;
+      bottom: auto !important;
+      font-size: 0.9rem !important;
+    }
+  }
+
+  /* アニメーション追加（オプション） */
+  .show-verse {
+    animation: fadeIn 0.5s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+*/ 一時的にここまで非表示 */
+
+
+/* フォーム要素 */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  font-size: 1.8rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #bbdefb;
+  border-radius: 10px;
+  background-color: #f3faff;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+input[type="submit"],
+button {
+  padding: 0.8rem 1.5rem;
+  font-size: 1.5rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  min-width: 48px;
+  min-height: 48px;
+  transition: background-color 0.3s;
+}
+
+
+/* 星のアニメーション */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.stars::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(white 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: starScroll 60s linear infinite;
+  opacity: 0.4;
+}
+
+
+
+
+
+/* モバイル向けのスタイル調整 */
+@media (max-width: 768px) {
+  header, footer {
+    height: auto; /* 高さを自動調整 */
+    padding: 0.8rem 0.5rem; /* パディングを減らす */
+    min-height: 60px; /* 最小高さを設定 */
+  }
+
+  header h1 {
+    font-size: 1.5rem; /* タイトルを小さく */
+    margin: 0.3rem 0; /* 余白調整 */
+  }
+
+  nav a {
+    font-size: 0.9rem; /* ナビゲーションを小さく */
+    padding: 0.4rem 0.8rem;
+    margin: 0.2rem;
+  }
+}
+
+
+  #mainMessage, .verse-display {
+    font-size: 2rem;
+  }
+
+
+/* メディアクエリ（PC: 1024px以上） */
+@media (min-width: 1024px) {
+  header h1 {
+    font-size: 3rem;
+  }
+
+  nav a {
+    font-size: 1.6rem;
+    padding: 0.5rem 1.5rem;
+  }
+
+  .faith-text {
+    font-size: 2.2rem;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    font-size: 2.2rem;
+  }
+}
+
+
+/* アニメーション */
+@keyframes glow {
+  0% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); }
+  50% { text-shadow: 0 0 20px #e1f5fe, 0 0 30px #4fc3f7; }
+  100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes starScroll {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-50%, -50%); }
+}
+
+#gameCanvas {
+  cursor: none;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* 横向き用スタイル */
+@media (orientation: landscape) {
+  body {
+    overflow: hidden; /* スクロール防止 */
+  }
+  #gameCanvas {
+    transform: rotate(0deg); /* 必要に応じて回転 */
+  }
+}
+
+/* スマホ縦向き（portrait）警告表示 */
+@media (orientation: portrait) and (max-width: 767px) {
+  #gameCanvas {
+    display: block;
+  }
+  #rotate-warning {
+    display: block; /* 回転促すメッセージ表示 */
+    text-align: center;
+    padding: 2rem;
+  }
+}
+
+/* スマホサイズの基本 */
+.contact-message {
+  font-size: 1.2rem; 
+}
+
+/* タブレット以上の画面サイズ（例: 幅768px以上）では大きく表示 */
+@media (min-width: 768px) {
+  .contact-message {
+    font-size: 1.8rem;
+  }
+}

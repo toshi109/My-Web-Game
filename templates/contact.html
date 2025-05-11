@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+お問い合わせ - 私のウェブサイト
+{% endblock %}
+
+{% block content %}
+<h1>お問い合わせ</h1>
+<p>ご質問やご相談がありましたら、以下のフォームよりご連絡ください。</p>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="flash-messages">
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<!-- modify this form HTML and place wherever you want your form -->
+<form
+  action="https://formspree.io/f/xzzrragw"
+  method="POST"
+>
+<label>名前:<br><input type="text" name="name" required></label><br>
+<label>メール:<br><input type="email" name="_replyto" required></label><br>
+<label>メッセージ:<br><textarea name="message" required></textarea></label><br>
+<input type="submit" value="送信">
+</form>
+{% endblock %}

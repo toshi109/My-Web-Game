@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>BlockBreaker Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>BlockBreaker Game!</h1>
+    <canvas id="gameCanvas" width="800" height="600" style="border:1px solid #000;"></canvas>
+    <button id="retryBtn" style="display:none;">もう一回！</button>
+    <div id="verseBox"></div>
+    <button id="change-verse">聖句を変える</button>
+
+    <!-- ここが大事！ bodyの最後にscript -->
+    <script src="{{ url_for('static', filename='js/game.js') }}"></script>
+</body>
+</html>
