@@ -1,5 +1,3 @@
-# こういう定義があるか確認してください（例）
-
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
