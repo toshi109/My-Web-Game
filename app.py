@@ -3,11 +3,25 @@ import os
 import random
 from flask import Flask, render_template, jsonify, send_from_directory
 from models import db, Verse
+from flask_compress import Compress
 
 # src フォルダへのパスを取得して sys.path に追加
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
 
 app = Flask(__name__)
+app.config['COMPRESS_REGISTER'] = True  # 自動登録を明示
+app.config['COMPRESS_MIMETYPES'] = [  # 圧縮対象MIMEタイプ
+    'text/html',
+    'text/css',
+    'text/xml',
+    'application/json',
+    'application/javascript'
+]
+app.config['COMPRESS_MIN_SIZE'] = 500  # 圧縮する最小サイズ(バイト)
+app.config['COMPRESS_LEVEL'] = 6  # 圧縮レベル(1-9) ※修正点
+app.config['COMPRESS_ALGORITHM'] = 'gzip'  # デフォルトアルゴリズム
+
+Compress(app)
 
 # SQLite データベースの設定
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///verses.db'
