@@ -1,16 +1,69 @@
-/* static/style.css */
+/* static/css/style.css */
+
+/* み言葉表示エリア（例：#verseBox） */
+body.android #verseBox {
+  font-size: 0.9rem;
+  padding: 0.5rem;
+}
+
+/* Retryボタン（例：#retryButton） */
+body.android #retryButton {
+  font-size: 0.9rem;
+  padding: 6px 12px;
+}
+
+
+
+
+/* 推奨: 最初に変数を定義 */
+:root {
+  --primary-color: #2E7D32;
+  --text-color: white;
+
+  /* ボタン用追加変数 */
+  --btn-font-family: sans-serif;
+  --btn-font-size-lg: 30px;
+  --btn-font-weight: normal;
+}
+
+/* その後で変数を使用 */
+body {
+  color: var(--text-color);
+}
+
+
+/* 共通CSSに追加 */
+.pc-only {
+  display: block;
+}
+
+.mobile-only {
+  display: none;
+}
+
+/* モバイル画面で切り替え */
+@media (max-width: 768px) {
+  .pc-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+}
+
+
 
 /* 基本スタイル（全デバイス共通） */
 .faith-text {
-  font-size: 2.2em;
-  font-weight: bold;
-  color: #2c3e50;
+  font-size: calc(var(--font-size-base) * 1.1);
+  color: var(--secondary-color); /* 変数を使用 */
 }
 
 /* 基本スタイル（モバイルファースト） */
 body {
   font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
-  background-image: url('../img/space_bg.png');
+  background-image: url('../img/space_bg.webp');
   background-color: #f0f0f0;
   background-size: cover;
   background-position: center;
@@ -42,7 +95,7 @@ header, footer {
 
 header h1 {
   animation: glow 3s infinite alternate;
-  font-size: 1.8rem;
+  font-size: 0.5rem;
   margin: 0.5rem 0;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
 }
@@ -52,7 +105,7 @@ nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 0.5rem 0;
+  padding: 0.3rem 0;
 }
 
 nav a {
@@ -90,10 +143,10 @@ main {
 @media screen and (max-width: 767px),
        (hover: none) and (pointer: coarse) {
   main {
-    border: 3px solid red !important;
+    border: 2px solid red !important;
     /* 追加でスマホ専用スタイル */
-    padding: 0.5rem !important;
-    margin: 0.5rem !important;
+    padding: 0.1rem !important;
+    margin: 0.1rem !important;
   }
 }
 
@@ -101,9 +154,11 @@ main {
 
 /* 基本スタイル（全デバイス向け） */
 #retryBtn {
-  font-family: sans-serif !important; /* フォント指定 */
-  font-size: 30px !important;
-  font-weight: normal !important;
+  font-family: var(--btn-font-family); 
+  font-size: var(--btn-font-size-lg); 
+  font-weight: var(--btn-font-weight); 
+  color: var(--text-color);
+  background: var(--primary-color);
 }
 
 /* スマホ向けスタイル */
@@ -282,7 +337,7 @@ button {
 @media (max-width: 768px) {
   header, footer {
     height: auto; /* 高さを自動調整 */
-    padding: 0.8rem 0.5rem; /* パディングを減らす */
+    padding: 0.4rem 0.2rem; /* パディングを減らす */
     min-height: 60px; /* 最小高さを設定 */
   }
 
@@ -293,8 +348,8 @@ button {
 
   nav a {
     font-size: 0.9rem; /* ナビゲーションを小さく */
-    padding: 0.4rem 0.8rem;
-    margin: 0.2rem;
+    padding: 0.2rem 0.4rem;
+    margin: 0.1rem;
   }
 }
 
@@ -342,14 +397,16 @@ button {
 @keyframes starScroll {
   from { transform: translate(0, 0); }
   to { transform: translate(-50%, -50%); }
+
 }
 
 #gameCanvas {
   cursor: none;
   display: block;
-  max-width: 100%;
+  max-width: 90%;
   height: auto;
   margin: 0 auto;
+  border: 1px solid red; 
 }
 
 /* 横向き用スタイル */
