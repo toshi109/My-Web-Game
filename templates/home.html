@@ -4,30 +4,43 @@
 
 {% block content %}
 <div id="messageCard">{{ scripture }}</div>
-<button id="change-verse" style="font-size: 20px; padding: 10px 20px;">新しいみ言葉を表示</button>
+<button id="change-verse" style="font-size: 20px; 
+            padding: 10px 20px; background-color: #2E7D32; /* 濃い緑 */
+            color: white; /* 白文字 */
+            border: none;
+            border-radius: 5px;
+        ">
+        新しいみ言葉を表示
+</button>
 
 <!-- 新しく表示されるみ言葉の場所を追加 -->
 <h1 id="verseBox" class="verse-box"></h1>
 
 <!-- 🎮 ゲームキャンバス -->
 <canvas id="gameCanvas" width="800" height="600"></canvas>
-<button id="retryBtn" style="font-size: 26px;">Retry</button>
+<button id="retryBtn" style="font-size: 20px;">Retry</button>
 
 <!-- JavaScriptの読み込み順序に注意 -->
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const changeBtn = document.getElementById("change-verse");
-        const verseBox = document.getElementById("verseBox");
-        const messageCard = document.getElementById("messageCard");
-    
+      document.addEventListener("DOMContentLoaded", function () {
+    // Android判定
+    if (/Android/i.test(navigator.userAgent)) {
+      document.body.classList.add("android");
+    }
+
+    // み言葉切り替えなど他の処理
+    const changeBtn = document.getElementById("change-verse");
+    const verseBox = document.getElementById("verseBox");
+    const messageCard = document.getElementById("messageCard");
+
         if (changeBtn && verseBox && messageCard) {
             changeBtn.addEventListener("click", async () => {
                 console.log("ボタンがクリックされました！"); // ← デバッグ用（残してOK）
-    
+
                 try {
                     const response = await fetch('/api/random-verse?t=' + new Date().getTime()); // キャッシュ対策
                     const data = await response.json();
-                    
+
                     // 表示更新
                     verseBox.textContent = data.verse;
                     verseBox.style.display = "block"; // 表示ON
@@ -38,8 +51,7 @@
             });
         }
     });
-    </script>
-    
+    </script>   
     
 
 <!-- ゲームスクリプトは最後に -->

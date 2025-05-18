@@ -1,9 +1,36 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+        <!-- SEO向け -->
+    <meta name="description" content="子どもにもやさしい、宇宙がテーマのブロック崩しゲーム！楽しく学べるウェブゲームです。">
+    <meta name="keywords" content="ブロック崩し, 宇宙, 子ども, 教育, 聖書, ゲーム">
+    <meta name="author" content="Remind Up">
+
+    <!-- Open Graph（SNS共有時の見た目） -->
+    <meta property="og:title" content="My Web Game - 宇宙のブロック崩し">
+    <meta property="og:description" content="未来に希望を！子どもと一緒に楽しめるブロック崩しゲーム。">
+    <meta property="og:image" content="{{ url_for('static', filename='img/og_image.png') }}">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Xカード -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="My Web Game - 宇宙のブロック崩し">
+    <meta name="twitter:description" content="未来に希望を！子どもと一緒に楽しめるブロック崩しゲーム。">
+    <meta name="twitter:image" content="{{ url_for('static', filename='img/og_image.png') }}">
+
+    <!-- facebook -->
+    <meta property="og:image" content="https://toshi109.pythonanywhere.com/static/img/og_image.png">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="1024">
+    <meta property="og:image:alt" content="聖書のみ言葉と遊べる楽しいブロック崩しゲーム">   
+
+
     <meta charset="UTF-8">
-    <title>{% block title %}マイ Web ゲーム{% endblock %}</title>
+    <title>{% block title %}My Web Game{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <body>
     <header>
         <div class="stars"></div>
@@ -23,9 +50,29 @@
         {% endblock %}
     </main>
 
-    <footer>
-        <p>&copy; 2025 My Web Game</p>
-    </footer>
+ <footer style="text-align: center; padding: 1rem; font-size: 0.8em; color: #666;">
+  <p>&copy; 2025 My Web Game</p>
+  {% if request.cookies.get('language') == 'ja' %}
+    <p>
+      <a href="https://lite.ip2location.com" 
+         target="_blank" 
+         rel="noopener noreferrer"
+         style="color: #0066cc; text-decoration: none;">
+        IP2Location LITE
+      </a>を利用しています
+    </p>
+  {% else %}
+    <p>
+      Geolocation by 
+      <a href="https://lite.ip2location.com" 
+         target="_blank" 
+         rel="noopener noreferrer"
+         style="color: #0066cc; text-decoration: none;">
+        IP2Location LITE
+      </a>
+    </p>
+  {% endif %}
+  </footer>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
