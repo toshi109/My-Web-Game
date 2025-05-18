@@ -4,10 +4,12 @@ const ctx = canvas.getContext("2d");
 
 const isAndroid = /Android/i.test(navigator.userAgent);
 
+
+
 if (isAndroid) {
   // Android向け軽量モード（解像度を落とす）
-  canvas.width = window.innerWidth / 1.5;
-  canvas.height = window.innerHeight / 1.5;
+  canvas.width = window.innerWidth / 0.4;
+  canvas.height = window.innerHeight / 0.4;
   console.log("Android: 軽量モードON");
 } else {
  
